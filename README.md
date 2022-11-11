@@ -58,3 +58,18 @@ frontend
 vendor/                  contains dependent 3rd-party packages
 environments/            contains environment-based overrides
 ```
+
+Install
+1. >docker-compose run --rm frontend composer install
+2. >docker-compose run --rm frontend php init  
+    choose "developer [0]" -> "yes"
+3. in "main-local.php"
+     'db' => [
+            'class' => \yii\db\Connection::class,
+            'dsn' => 'pgsql:host=pgsql;dbname=yii2advanced',
+            'username' => 'yii2advanced',
+            'password' => 'secret',
+            'charset' => 'utf8',
+        ],
+4. >docker-compose run --rm frontend php yii migrate
+
